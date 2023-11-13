@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+{% block title %}S Band Log{% endblock %}
+{% block content %}
+    <form method="post" action="">
+    {% csrf_token %}
+      <div class="container">
+        <div class="form py-3">
+          <div class="row py-3">
+
+            <div class="col-md-6 mt-md-0 mt-3">
+              <label style="font-weight: 600">Trigger</label>
+              <input type="text" class="form-control" name="Trigger" required />
+            </div>
+
+            <div class="col-md-6 mt-md-0 mt-3">
+              <label
+                for="inputState"
+                class="form-label"
+                style="font-weight: 600"
+                >Operator</label
+              >
+              <div id="inputFieldContainer"></div>
+              <select id="inputState" class="form-select" name="Operator" >
+                <option selected hidden>Choose Operator</option>
+                <option>sgyeltshen@tech.gov.bt</option>
+                <option>jchimi@tech.gov.bt</option>
+                <option>kdorji@tech.gov.bt</option>
+                <option>tenzin@tech.gov.bt</option>
+                <option>niraj@tech.gov.bt</option>
+              </select>
+            </div> 
+
+            <div class="col-md-6 mt-md-0 mt-3">
+              <label style="font-weight: 600">Date</label>
+              <input type="date" class="form-control" name="Date" required />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper rounded bg-white">
+      <div
+        class="text-center"
+        style="
+          background-color: #453f3c;
+          color: #ffff;
+          height: 50px;
+          padding-top: 12px;
+          font-weight: bold;
+        "
+      >
+        Satellite Pass Information
+      </div>
+      <div class="container">
+        <div class="form py-3">
+          <div class="row py-3">
+            <div class="col-md-6 mt-md-0 mt-3">
+              <label style="font-weight: 600">AoS (Local Time)</label>
+              <input type="time" class="form-control" name="aos" required />
+            </div>
+
+            <div class="col-md-6 mt-md-0 mt-3">
+              <label style="font-weight: 600">LoS (Local Time)</label>
+              <input type="time" class="form-control" name="LossOfSignal" required />
+            </div>
+
+            <div class="col-md-6 mt-md-0 mt-3">
+              <label style="font-weight: 600">Max Elevation</label>
+              <input type="number" class="form-control" name="maxElevation" required />
+            </div>
+
+            <div class="col-md-6 mt-md-0 mt-3">
+              <label style="font-weight: 600">Julian Date</label>
+              <input type="number" class="form-control" name="JulianDate" required />
+            </div>
+
+            <div class="col-md-6 mt-md-0 mt-3">
+              <label style="font-weight: 600">Orbit Number</label>
+              <input type="number" class="form-control" name="OrbitNumber" required />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper rounded bg-white">
+      <!-- <div><h1 class="fs-3 text-center text-white text-bg-dark   my-md-2 my-3" style="height: 50px;">Parents/Guardain Details</h1> </div>  -->
+      <div
+        class="text-center"
+        style="
+          background-color: #453f3c;
+          color: #ffff;
+          height: 50px;
+          padding-top: 12px;
+          font-weight: bold;
+        "
+      >
+        Scheduled Operation
+      </div>
+      <div class="guardian">
+        <div class="container">
+          <div class="form py-3">
+            <div class="row py-3">
+              <div class="col-md-6 mt-md-0 mt-3">
+                <label
+                  for="inputState"
+                  class="form-label"
+                  style="font-weight: 600"
+                  >Operation Type</label
+                >
+                <select id="inputState" class="form-select" name="OperationType">
+                  <option selected hidden>Choose Operation Type</option>
+                  <option>Full PL_PB_1Mbps</option>
+                  <option>Partial FHK_PB</option>
+                  <option>Partial PL_PB_1Mbps</option> 
+                  <option>Imaging</option>
+                </select>
+              </div>
+
+              <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Operation ON Time(Local Time)</label>
+                <input type="time" class="form-control" name="OperationOnTime" required />
+              </div>
+
+              <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Operation OFF Time(Local Time)</label>
+                <input type="time" class="form-control" name="OperationOffTime" required />
+              </div>
+
+              <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Data Break</label>
+                <input type="number" class="form-control" name="DataBreak" />
+              </div>
+
+              <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Imaging Area</label>
+                <input type="text" class="form-control" name="ImagingArea"id="dataBreakInput"/>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper rounded bg-white">
+      <div
+        class="text-center"
+        style="
+          background-color: #453f3c;
+          color: #ffff;
+          height: 50px;
+          padding-top: 12px;
+          font-weight: bold;
+        "
+      >
+        Not Scheduled Operation
+      </div>
+      <div class="guardian">
+        <div class="container">
+          <div class="form py-3">
+            <div class="row py-3">
+              <div class="col-md-6 mt-md-0 mt-3">
+                <label
+                  for="inputState"
+                  class="form-label"
+                  style="font-weight: 600"
+                  >Operation Type</label
+                >
+                <select id="inputState" class="form-select" name="OperationType_ns" >
+                  <option selected hidden>Choose Operation Type</option>
+                  <option>Full PL_PB_1Mbps</option>
+                  <option>Partial FHK_PB</option>
+                  <option>Partial PL_PB_1Mbps</option> 
+                </select>
+              </div>
+
+              <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Operation ON Time(Local Time)</label>
+                <input type="time" class="form-control" name="OperationOnTime_ns" />
+              </div>
+
+              <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Operation OFF Time(Local Time)</label>
+                <input type="time" class="form-control" name="OperationOffTime_ns" />
+              </div>
+
+              <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Data Break</label>&nbsp
+                <input type="number" class="form-control" name="DataBreak_ns" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper rounded bg-white">
+      <!-- <div><h1 class="fs-3 text-center text-white text-bg-dark   my-md-2 my-3" style="height: 50px;">Parents/Guardain Details</h1> </div>  -->
+      <div
+        class="text-center"
+        style="
+          background-color:#453f3c;
+          color: #ffff;
+          height: 50px;
+          padding-top: 12px;
+          font-weight: bold;
+        "
+      >
+        Observation
+      </div>
+      <div class="guardian">
+        <div class="container">
+          <div class="form py-3">
+            <div class="row py-3">
+              <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Observation</label>
+                <textarea
+                  name="Observation"
+                  class="form-control"
+                  cols="70"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="btn btn-primary mt-3 ">Submit</div>  -->
+    <div style="text-align: center">
+      <button type="submit" id="submit" class="btn btn-outline-success">Submit</button>
+    </div>
+  </form>
+
+  <br>
+  {% endblock %}

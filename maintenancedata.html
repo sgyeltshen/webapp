@@ -1,0 +1,119 @@
+    {% extends 'base.html' %}
+    {% block title %}Maintenance Log{% endblock %}
+    {% block content %}
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0">All Maintenance Data</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+
+                 <!-- Modal -->
+                <div class="container py-3">
+              </div>
+              <!-- end modal -->
+
+              <div class="card">
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table
+                    id="example1"
+                    class="table table-bordered table-striped"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Sl.no</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Issues</th>
+                        <th>Operator</th>
+                        <th>Fault Log</th>
+                        <th>Observation</th>
+                        <th>Reports</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                    {% comment %} ##### where i.model variables ##### {% endcomment %}
+                      <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.date}}</td>
+                        <td>{{i.time}}</td>
+                        <td>{{i.issues}}</td>
+                        <td>{{i.operator}}</td>
+                        <td>{{i.faultLog}}</td>
+                        <td>{{i.observation}}</td>
+                        <td>{{i.report}}</td>
+                        {% comment %} <td><button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal{{i.id}}">Edit</button></td> {% endcomment %}
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <!-- end card-body -->
+              </div>
+              <!-- end card -->
+            </div>
+
+             {% comment %} {% for i in data %}
+                <div class="modal fade" id="myModal{{i.id}}" role="dialog">
+                  <div class="modal-dialog">
+                 
+                  <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1>Edit Maintenance Data</h1>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                       <form method="post" action="/save_maintenance_data/{{i.id}}/" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label>Date</label>
+                        <input  class="form-control" type="date" id="dat" name="dat" value="{{i.date}}">
+                        <br>
+                        <label>Time</label>
+                        <input  class="form-control" type="time" id="tim" name="tim" value="{{i.time}}">
+                        <br>
+                        <label>Issues</label>
+                        <input  class="form-control" type="text" id="issue" name="issue" value="{{i.issues}}">
+                        <br>
+                        <label>Operator</label>
+                        <select id="inputState" class="form-control" name="Operator">
+                            <option selected hidden>{{i.operator}}</option>
+                            <option>sgyeltshen@tech.gov.bt</option>
+                            <option>jchimi@tech.gov.bt</option>
+                            <option>kdorji@tech.gov.bt</option>
+                            <option>tenzin@tech.gov.bt</option>
+                            <option>niraj@tech.gov.bt</option>
+                          </select>
+                        </select>
+                        <br>
+                        <label>Fault Log</label>
+                        <input  class="form-control" type="file" id="flog" name="flog" value="{{i.faultLog.url}}">
+                        <br>
+                        <label>Observation</label>
+                        <input  class="form-control" type="text" id="observe" name="observe" value="{{i.observation}}">
+                        <br>
+                        <label>Reports</label>
+                        <input  class="form-control" type="file" id="rep" name="rep" value="{{i.report.url}}">
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-success">save</button>
+                      </div>
+                      </form>  
+                    </div>
+
+                  </div>
+                </div>  
+              {% endfor %}  {% endcomment %}
+    {% endblock %}

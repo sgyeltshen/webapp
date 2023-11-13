@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}Maintenance Log{% endblock %}
+{% block content %}
+    <form method="post" action="" enctype = "multipart/form-data">
+    {% csrf_token %}
+      <div class="container">
+        <div class="form py-3">
+          <div class="row py-3">
+
+            <div class="col-md-6 mt-md-0 mt-3">
+              <label style="font-weight: 600">Date</label>
+              <input type="date" class="form-control" name="Date" id="Date" required />
+            </div>
+
+            <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Time</label>
+                <input type="time" class="form-control" name="Time" id="Time" required />
+            </div>
+
+            <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Issues</label>
+                <textarea
+                  name="Issues"
+                  id="Issues"
+                  class="form-control"
+                  cols="70"
+                  rows="2"
+                ></textarea>
+            </div>
+
+            <div class="col-md-6 mt-md-0 mt-3">
+              <label
+                for="inputState"
+                class="form-label"
+                style="font-weight: 600"
+                >Operator</label
+              >
+              <div id="inputFieldContainer"></div>
+              <select id="inputState" class="form-select" name="Operator" id="Operator">
+                <option selected hidden>Choose Operator</option>
+                <option>sgyeltshen@tech.gov.bt</option>
+                <option>jchimi@tech.gov.bt</option>
+                <option>kdorji@tech.gov.bt</option>
+                <option>tenzin@tech.gov.bt</option>
+                <option>niraj@tech.gov.bt</option>
+              </select>
+            </div> 
+            
+            <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Fault Log</label>
+                <input type="file" class="form-control" name="FaultLog" id="FaultLog" required />
+            </div>
+
+            <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Observation</label>
+                <textarea
+                  name="Observation"
+                  id="Observation"
+                  class="form-control"
+                  cols="70"
+                  rows="2"
+                ></textarea>
+            </div>
+
+            <div class="col-md-6 mt-md-0 mt-3">
+                <label style="font-weight: 600">Report</label>
+                <input type="file" class="form-control" name="Reports" id="Reports" required />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button  -->
+    <div style="text-align: center">
+      <button type="submit" id="submit" class="btn btn-outline-success">Submit</button>
+    </div>
+  </form>
+
+  {% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'base.html' %} {% block title %}SBand Log{% endblock %} {% comment %}
+///uyguygyugy7g7g7g76g76g {% endcomment %} {% block content %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">All S-band Data</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <!-- Modal -->
+            <div class="container py-3"></div>
+            <!-- end modal -->
+
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Sl.no</th>
+                      <th>Trigger</th>
+                      <th>Operator</th>
+                      <th>Date</th>
+                      <th>Aos (LocalTime)</th>
+                      <th>LoS (LocalTime)</th>
+                      <th>Max Elevation</th>
+                      <th>Julian Date</th>
+                      <th>Orbit Number</th>
+                      <th>OperationType</th>
+                      <th>OperationOnTime</th>
+                      <th>OperationOffTime</th>
+                      <th>Data Break</th>
+                      <th>Imaging Area</th>
+                      <th>OperationType</th>
+                      <th>OperationOnTime</th>
+                      <th>OperationOffTime</th>
+                      <th>Data Break</th>
+                      <th>Observation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in data %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{i.Trigger}}</td>
+                      <td>{{i.Operator}}</td>
+                      <td>{{i.date}}</td>
+                      <td>{{i.AoS}}</td>
+                      <td>{{i.LoS}}</td>
+                      <td>{{i.MaxElevation}}</td>
+                      <td>{{i.Juliandate}}</td>
+                      <td>{{i.Orbitnumber}}</td>
+                      <td>{{i.Operationtype}}</td>
+                      <td>{{i.Operation_on_time}}</td>
+                      <td>{{i.Operation_of_time}}</td>
+                      <td>{{i.Databreak}}</td>
+                      <td>{{i.Imagingarea}}</td>
+                      <td>{{i.Operationtype_ns}}</td>
+                      <td>{{i.Operation_on_time_ns}}</td>
+                      <td>{{i.Operation_of_time_ns}}</td>
+                      <td>{{i.Databreak_ns}}</td>
+                      <td>{{i.Observation}}</td>
+                      {% comment %}
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-outline-success"
+                          data-toggle="modal"
+                          data-target="#myModal"
+                        >
+                          Edit
+                        </button>
+                      </td>
+                      {% endcomment %}
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- end card-body -->
+            </div>
+            <!-- end card -->
+          </div>
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
